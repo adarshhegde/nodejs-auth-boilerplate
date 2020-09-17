@@ -1,7 +1,6 @@
 
 
 ## NodeJS Express Backend Boilerplate w/ JWT Auth (Token http postback)
-#
 ## Todo ✅
 > Add Optional Session Based Verification
 
