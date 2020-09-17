@@ -4,20 +4,22 @@ const authorize = require("../../middlewares/authorize");
 
 
 /*
-    route /api/user/login
+    POST => hostname/api/user/login
 */
 router.post("/login", userController.login);
 
 
 /*
-    route /api/user/register
+    POST => hostname/api/user/register
 */
 router.post("/register", userController.register);
 
+
 /*  
-    !NEEDS AUTH
-    route /api/user/verify
+    POST => hostname/api/user/verify
+    >> Requires Authentication Token
 */
 router.post("/verify", authorize, userController.verify);
+
 
 module.exports = router;

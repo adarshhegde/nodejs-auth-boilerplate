@@ -17,7 +17,7 @@ delayMs: 500,
 });
 
 /*
-    route /
+    GET => hostname/
 */
 router.get("/", wrap(async (req, res) => { 
     res.send(200)
@@ -25,9 +25,8 @@ router.get("/", wrap(async (req, res) => {
 
 
 /*
-    !TIME LIMITED
-    !RATE LIMITED
-    route /api
+    hostname/api
+    >> Mounting subroute "api"
 */
 router.use("/api", limiter, speedLimiter, apiRouter);
 
