@@ -7,8 +7,13 @@ app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 
-app.use("/",  require("./routes/")); // mount root route
+// mounting root router
+app.use("/",  require("./routes/")); 
 
-app.use([middlewares.mongoseErrors, middlewares.RuntimeErrorHandler,  middlewares.Route404Handler]);
+app.use([
+    middlewares.mongooseErrorHandler,
+    middlewares.UncaughtExceptionHandler,
+    middlewares.missingRouteHandler
+]);
 
 module.exports = app;

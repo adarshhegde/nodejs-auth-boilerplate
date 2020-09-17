@@ -1,4 +1,3 @@
-const { wrap } = require("../utils")
 const apiRouter = require("./api");
 const router = require("express").Router();
 
@@ -11,23 +10,22 @@ const limiter = rateLimit({
 })
 
 const speedLimiter = slowDown({
-windowMs: 30 * 1000,
-delayAfter: 1,
-delayMs: 500,
+    windowMs: 30 * 1000,
+    delayAfter: 1,
+    delayMs: 500,
 });
 
 /*
-    route /
+    GET => hostname/
 */
-router.get("/", wrap(async (req, res) => { 
+router.get("/", (req, res) => {
     res.send(200)
-}));
+});
 
 
 /*
-    !TIME LIMITED
-    !RATE LIMITED
-    route /api
+    hostname/api
+    >> Mounting subroute "api"
 */
 router.use("/api", limiter, speedLimiter, apiRouter);
 
